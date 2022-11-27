@@ -2,8 +2,8 @@ fx_version 'cerulean'
 games { 'gta5' }
 
 author 'bot'
-description 'Fiji Carwash'
-version '1.0.0'
+description 'Fiji Carwash, NDCore + OxLib'
+version '1.0.1'
 lua54 'yes'
 
 shared_scripts {
@@ -12,14 +12,10 @@ shared_scripts {
 }
 
 server_scripts {
-    'server.lua'
+    'src/server.lua'
 }
 client_scripts {
-    '@PolyZone/client.lua',
-    '@PolyZone/BoxZone.lua',
-    '@PolyZone/EntityZone.lua',
-    '@PolyZone/CircleZone.lua',
-    '@PolyZone/ComboZone.lua',
-	'client.lua'
+    'src/zones.lua',
+	'src/client.lua'
     
 }
