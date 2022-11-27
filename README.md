@@ -12,7 +12,7 @@ These resources are required to run Fiji Car Wash.
 [OxLib](https://github.com/overextended/ox_lib)    
 
 ## Features
-* Polyzones (Currently BoxZones): Drive into the zone (Car Wash) to activate it
+* Full OxLib Zones
 * Automatically checks if player has funds for car wash
 * Automatically deducts funds and washes vehicle
 * Notifications for Paid, Washed Vehicle and No funds
