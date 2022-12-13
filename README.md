@@ -24,3 +24,4 @@ These resources are required to run Fiji Car Wash.
 
 - [@zotters](https://github.com/Zotters)
 - Dependency creators and contributors
+-
