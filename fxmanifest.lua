@@ -3,7 +3,7 @@ games { 'gta5' }
 
 author 'bot'
 description 'Fiji Carwash Extended'
-version '1.1.0'
+version '1.0.0'
 lua54 'yes'
 
 shared_scripts {
@@ -15,7 +15,7 @@ server_scripts {
     'core/server.lua'
 }
 client_scripts {
-    'core/client.lua',
-    'core/carwash.lua'
+    'core/carwash.lua',
+    'core/client.lua'
     
 }

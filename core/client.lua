@@ -6,18 +6,16 @@ local inVeh = false
 local detailed = nil
 local basic = nil
 local rinse = nil
-ped = nil
-veh = nil
+local ped = PlayerPedId()
+veh = GetVehiclePedIsIn(ped)
 dirty = nil
 clean = nil
 
 
--- Need to write function for when the UI is disabled, fix zones and maybe add a check if the dirt level is < the chosen wash style then add an alert
+
 
 -- [[ Start Event ]] --
 RegisterNetEvent('fiji:deploy', function()
-        ped = PlayerPedId()
-        veh = GetVehiclePedIsIn(ped)
         local settings = Config.Settings.UI
         local debug = Config.Settings.debug
         local inVeh = false
@@ -30,50 +28,54 @@ RegisterNetEvent('fiji:deploy', function()
         if inVeh and settings then
                  TriggerEvent('fiji:uideploy') -- Interface boot
             else
-                -- DO SOMETHING
+                -- DO SOMETHING IF UI DISABLED
                 end
             end
         end
 end)
+
+
 -- [[ Interface ]] -- 
-    lib.registerContext({
-        id = 'carwash',
-        title = 'Car Wash',
-        onExit = function()
-        end,
-        options = {
-            {
-                title = ' '..carWash.Settings.rinseCost..' - Rinse',
-                icon = 'dollar-sign',
-                arrow = true,
-                event = 'fiji:rinse',
-                args  = {
-                    cost = carWash.Settings.rinseCost, 
-                    wash = 1,
-                },
+lib.registerContext({
+    id = 'carwash',
+    title = 'Car Wash',
+    onExit = function()
+    end,
+    options = {
+        {
+            title = ' '..carWash.Settings.rinseCost..' - Rinse',
+            icon = 'dollar-sign',
+            arrow = true,
+            event = 'fiji:rinse',
+            args  = {
+                cost = carWash.Settings.rinseCost, 
+                wash = 1,
             },
-            {
-                title = ' '..carWash.Settings.basicCost.. ' - Basic Wash',
-                icon = 'dollar-sign',
-                arrow = true,
-                event = 'fiji:basic',
-                args =  {
-                    cost = carWash.Settings.basicCost, 
-                    wash = 2,
-                },
+        },
+        {
+            title = ' '..carWash.Settings.basicCost.. ' - Basic Wash',
+            icon = 'dollar-sign',
+            arrow = true,
+            event = 'fiji:basic',
+            args =  {
+                cost = carWash.Settings.basicCost, 
+                wash = 2,
             },
-            {
-                title = ' '..carWash.Settings.detailedCost.. ' - Detailed Wash',
-                icon = 'dollar-sign',
-                arrow = true,
-                event = 'fiji:detailed',
-                args =  {
-                    cost = carWash.Settings.detailedCost, 
-                    wash = 3,
-                },
-            }
+        },
+        {
+            title = ' '..carWash.Settings.detailedCost.. ' - Detailed Wash',
+            icon = 'dollar-sign',
+            arrow = true,
+            event = 'fiji:detailed',
+            args =  {
+                cost = carWash.Settings.detailedCost, 
+                wash = 3,
+            },
         }
-    })
+    }
+})
+
+
 -- [[ UI DEPLOY ]] -- 
 RegisterNetEvent('fiji:uideploy', function()
     if dirty then
@@ -153,7 +155,7 @@ RegisterNetEvent('fiji:cleanerror', function()
 end
 end)
 
--- [[ FUNCTIONS ]] -- 
+--[[ FUNCTIONS ]]--
 function dirtCheck()
     if GetVehicleDirtLevel(veh) >= carWash.Settings.minDirt then
         clean  = false
@@ -165,8 +167,6 @@ function dirtCheck()
 end
 
 function washRinse()
-    ped = PlayerPedId()
-    veh = GetVehiclePedIsIn(ped)
     local sleep = 1000
     if rinse then 
         local rinsed = false
@@ -202,8 +202,6 @@ function washRinse()
 end
 
 function washBasic()
-    ped = PlayerPedId()
-    veh = GetVehiclePedIsIn(ped)
     local sleep = 1000
     if basic then 
         local rinsed = false
@@ -241,8 +239,6 @@ end
 function washDetailed()
     if detailed then 
     local sleep = 1000
-        ped = PlayerPedId()
-        veh = GetVehiclePedIsIn(ped)
         if GetVehicleDirtLevel(veh) > carWash.Settings.detailedLevel then
             if lib.progressBar({
                 duration = carWash.Settings.detailTime,
@@ -271,3 +267,4 @@ function washDetailed()
         end
     end
 end
+

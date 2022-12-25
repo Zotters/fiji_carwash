@@ -1,12 +1,12 @@
 NDCore = exports["ND_Core"]:GetCoreObject()
 
--- [[ Car Wash Rebuilt ]] --
+local player = PlayerPedId(-1)
 
+-- [[ Car Wash Rebuilt ]] --
 CreateThread(function()
-    
-    local player = PlayerPedId(-1)
 
     while true do
+        
         local playerPos = GetEntityCoords(player, true)
         local onPoint = false  
        
@@ -20,14 +20,13 @@ CreateThread(function()
                else
                 checked = false
                end
-            else 
+            else
+                onPoint = false
             end
-        
             if onPoint and not checked then
                 TriggerEvent('fiji:deploy')
                 checked = true
             end
-
         end
         Wait(0)
     end
