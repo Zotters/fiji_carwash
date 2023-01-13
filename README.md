@@ -1,7 +1,8 @@
 
 ![](https://i.ibb.co/7WV3rx7/fijiwash.png)
-
-
+  
+2.0 Soon™
+  
 ## Features
 * Standalone zones
 * Vehicle and Player checks
