@@ -1,7 +1,7 @@
 
 ![](https://i.ibb.co/7WV3rx7/fijiwash.png)
   
-2.0 Soon™
+2.0 Never?!
   
 ## Features
 * Standalone zones
